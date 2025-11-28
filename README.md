@@ -95,14 +95,9 @@ The Smart Task Analyzer uses a multi-factor scoring algorithm:
 
 ### Installation
 
-1. **Clone or download the project**
-   ```bash
-   cd C:\Users\[YourUsername]\Desktop
-   # If from git: git clone [repository-url]
-   cd task-analyzer
-   ```
 
-2. **Create and activate virtual environment**
+
+1. **Create and activate virtual environment**
    ```bash
    python -m venv venv
    
@@ -113,23 +108,23 @@ The Smart Task Analyzer uses a multi-factor scoring algorithm:
    source venv/bin/activate
    ```
 
-3. **Install dependencies**
+2. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Run database migrations**
+3. **Run database migrations**
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-5. **Start the development server**
+4. **Start the development server**
    ```bash
    python manage.py runserver
    ```
 
-6. **Open the frontend**
+5. **Open the frontend**
    - Open `frontend/index.html` in your web browser
    - Or visit the API directly at `http://127.0.0.1:8000/api/tasks/`
 
