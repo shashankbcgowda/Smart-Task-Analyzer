@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task Analyzer</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Smart Task Analyzer</h1>
+            <p>Help decide what to work on first using intelligent prioritization</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Side: Input Area -->
+            <div class="input-section">
+                <h2>📝 Input Your Tasks</h2>
+                
+                <!-- Input Method Toggle -->
+                <div class="input-toggle">
+                    <button id="jsonToggle" class="toggle-btn active">JSON Input</button>
+                    <button id="formToggle" class="toggle-btn">Form Input</button>
+                </div>
+
+                <!-- JSON Input Area -->
+                <div id="jsonInput" class="input-method">
+                    <label for="taskInput">Tasks (JSON Format):</label>
+                    <textarea id="taskInput" placeholder='[
+  {
+    "title": "Complete project report",
+    "due_date": "2024-12-01",
+    "importance": 8,
+    "estimated_hours": 3,
+    "dependencies": []
+  },
+  {
+    "title": "Review team presentations",
+    "due_date": "2024-11-30",
+    "importance": 6,
+    "estimated_hours": 1,
+    "dependencies": []
+  }
+]'></textarea>
+                </div>
+
+                <!-- Form Input Area -->
+                <div id="formInput" class="input-method hidden">
+                    <div class="form-task">
+                        <h3>Add Task</h3>
+                        <input type="text" id="taskTitle" placeholder="Task title" required>
+                        <input type="date" id="taskDueDate" required>
+                        <div class="form-row">
+                            <label>
+                                Importance (1-10):
+                                <input type="range" id="taskImportance" min="1" max="10" value="5">
+                                <span id="importanceValue">5</span>
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <label>
+                                Estimated Hours:
+                                <input type="number" id="taskHours" min="0.5" max="40" step="0.5" value="1">
+                            </label>
+                        </div>
+                        <button id="addTask" type="button">Add Task</button>
+                    </div>
+                    
+                    <div id="taskList" class="task-list">
+                        <h4>Tasks Added:</h4>
+                        <div id="addedTasks"></div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <div class="strategy-selector">
+                        <label for="strategy">Sorting Strategy:</label>
+                        <select id="strategy">
+                            <option value="balanced">Balanced Priority</option>
+                            <option value="deadline">Deadline Driven</option>
+                            <option value="quickwins">Quick Wins First</option>
+                            <option value="importance">Importance First</option>
+                        </select>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="analyzeBtn" class="primary-btn">🔍 Analyze Tasks</button>
+                        <button id="suggestBtn" class="secondary-btn">💡 Get Top 3 Suggestions</button>
+                        <button id="clearBtn" class="clear-btn">🗑️ Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Results Display -->
+            <div class="results-section">
+                <h2>📊 Analysis Results</h2>
+                <div id="loadingSpinner" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing your tasks...</p>
+                </div>
+                
+                <div id="results" class="results-container">
+                    <div class="welcome-message">
+                        <h3>👋 Welcome to Smart Task Analyzer!</h3>
+                        <p>Add your tasks on the left and click "Analyze Tasks" to see intelligent prioritization.</p>
+                        <div class="features">
+                            <div class="feature">
+                                <span class="icon">⚡</span>
+                                <span>Urgency-based scoring</span>
+                            </div>
+                            <div class="feature">
+                                <span class="icon">🎯</span>
+                                <span>Importance weighting</span>
+                            </div>
+                            <div class="feature">
+                                <span class="icon">🏃</span>
+                                <span>Quick wins detection</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Smart Task Analyzer - Helping you focus on what matters most 🚀</p>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
