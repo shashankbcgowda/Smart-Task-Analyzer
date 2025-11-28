@@ -1,0 +1,13 @@
+cd C:\Users\shash\Desktop\NxtWave\task-analyzer
+venv\Scripts\activate
+python manage.py migrate
+python manage.py runserver
+
+http://127.0.0.1:8000/app 
+
+
+Step 3: Verify API Endpoints
+Test these URLs in your browser:
+http://127.0.0.1:8000/ (Homepage)
+http://127.0.0.1:8000/api/tasks/suggest/ (Get suggestions)
+http://127.0.0.1:8000/api/tasks/strategies/ (Available strategies)
